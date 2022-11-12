@@ -38,8 +38,19 @@ let day = days[date.getDay()];
 return `${day}  ${hours}:${minutes}`;
 }
 
-
-let apiKey = "71ebeeaed9cc1b5740f1ef2da025fc0a";
-let city = "Paris";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function search(city) {
+  let apiKey = "71ebeeaed9cc1b5740f1ef2da025fc0a";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayTemperature);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+
+
+    let form = document.querySelector("#search-form");
+    form.addEventListener("submit", handleSubmit);
