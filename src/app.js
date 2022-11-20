@@ -41,6 +41,33 @@ let day = days[date.getDay()];
 return `${day}  ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+let forecastElement = document.querySelector("#forecast");
+
+let forecastHTML = `<div class="row">`;
+let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+days.forEach(function(day){
+forecastHTML = forecastHTML + `
+
+              <div class="col-2">
+                <div class="weather-forecast-date">
+                ${day}
+              </div>
+                <img src="http://openweathermap.org/img/wn/04n@2x.png" alt="" width="35"/>
+                <div class="weather-forecast-temp">
+                 <span class="weather-forecast-temp-max">
+                  15° /</span>
+                  <span class="weather-temp-forecast-min">
+                   10° 
+                  </span>
+                  </div>
+              </div>
+            `;
+})
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
+
 function search(city) {
   let apiKey = "71ebeeaed9cc1b5740f1ef2da025fc0a";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -64,6 +91,8 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 let celsiusTemperature = null;
+
+displayForecast();
 
     let form = document.querySelector("#search-form");
     form.addEventListener("submit", handleSubmit);
