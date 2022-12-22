@@ -44,7 +44,6 @@ days.forEach(function (forecastDay, index) {
 forecastHTML = forecastHTML + `
 
               <div class="col-2">
-                
                 <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" width="35"/>
                 <div class="weather-forecast-temperatures">
                  <span class="weather-forecast-temperature-max"> ${Math.round(forecastDay.temp.max)}
